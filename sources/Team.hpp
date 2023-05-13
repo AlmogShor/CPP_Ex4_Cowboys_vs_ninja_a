@@ -9,138 +9,150 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
 
-class Point {
-public:
-    Point(double x, double y);
+namespace ariel {
+    class Point {
+    public:
+        Point(double x, double y);
 
-    double distance(const Point &other) const;
+        double distance(const Point &other) const;
 
-    void print() const;
+        void print() const;
 
-    Point moveTowards(const Point &source, const Point &target, double distance) const;
+        Point moveTowards(const Point &source, const Point &target, double distance) const;
 
-private:
-    double x;
-    double y;
-};
+        //getters
+        double getX() const {
+            return x;
+        }
 
-class Character {
-public:
-    Character(const std::string &name, const Point &location, int hit_points);
+        double getY() const {
+            return y;
+        }
 
-    bool isAlive() const;
+    private:
+        double x;
+        double y;
+    };
 
-    double distance(const Character &other) const;
+    class Character {
+    public:
+        Character(const std::string &name, const Point &location, int hit_points);
 
-    void hit(int damage);
+        bool isAlive() const;
 
-    std::string getName() const;
+        double distance(const Character &other) const;
 
-    Point getLocation() const;
+        void hit(int damage);
 
-    void print() const;
+        std::string getName() const;
 
-protected:
-    std::string name;
-    Point location;
-    int hit_points;
-};
+        Point getLocation() const;
 
-class Cowboy : public Character {
-public:
-    Cowboy(const std::string &name, const Point &location);
+        std::string print() const;
 
-    void shoot(Character *enemy);
+    protected:
+        std::string name;
+        Point location;
+        int hit_points;
+    };
 
-    bool hasBullets() const;
+    class Cowboy : public Character {
+    public:
+        Cowboy(const std::string &name, const Point &location);
 
-    void reload();
+        void shoot(Character *enemy);
 
-private:
-    int bullets;
-};
+        bool hasBullets() const;
 
-class Ninja : public Character {
-public:
-    Ninja(const std::string &name, const Point &location, int speed, int hit_points);
+        void reload();
 
-    void move(const Character *enemy);
+    private:
+        int bullets;
+    };
 
-    void slash(Character *enemy) const;
+    class Ninja : public Character {
+    public:
+        Ninja(const std::string &name, const Point &location, int speed, int hit_points);
 
-protected:
-    int speed;
-};
+        void move(const Character *enemy);
 
-class YoungNinja : public Ninja {
-public:
-    YoungNinja(const std::string &name, const Point &location);
-};
+        void slash(Character *enemy) const;
 
-class TrainedNinja : public Ninja {
-public:
-    TrainedNinja(const std::string &name, const Point &location);
-};
+    protected:
+        int speed;
+    };
 
-class OldNinja : public Ninja {
-public:
-    OldNinja(const std::string &name, const Point &location);
-};
+    class YoungNinja : public Ninja {
+    public:
+        YoungNinja(const std::string &name, const Point &location);
+    };
 
-class Team {
-private:
-    std::vector<Fighter *> fighters;
-    Fighter *leader;
+    class TrainedNinja : public Ninja {
+    public:
+        TrainedNinja(const std::string &name, const Point &location);
+    };
 
-public:
-    Team(Fighter *leader);
+    class OldNinja : public Ninja {
+    public:
+        OldNinja(const std::string &name, const Point &location);
+    };
 
-    ~Team();
+    class Team {
+    private:
+        std::vector<Character *> fighters;
+        Character *leader;
 
-    void add(Fighter *fighter);
+    public:
+        Team(Character *leader);
 
-    void attack(Team *enemy);
+        ~Team();
 
-    bool stillAlive();
+        void add(Character *fighter);
 
-    void print();
-};
+        void attack(Team *enemy);
 
-class Team2 {
-private:
-    std::vector<Fighter *> fighters;
-    Fighter *leader;
+        bool stillAlive();
 
-public:
-    Team2(Fighter *leader);
+        void print();
+    };
 
-    ~Team2();
+    class Team2 {
+    private:
+        std::vector<Character *> fighters;
+        Character *leader;
 
-    void add(Fighter *fighter);
+    public:
+        Team2(Character *leader);
 
-    void attack(Team2 *enemy);
+        ~Team2();
 
-    bool stillAlive();
+        void add(Character *fighter);
 
-    void print();
-};
+        void attack(Team2 *enemy);
 
-class SmartTeam {
-private:
-    std::vector<Fighter *> fighters;
-    Fighter *leader;
+        bool stillAlive();
 
-public:
-    SmartTeam(Fighter *leader);
+        void print();
+    };
 
-    ~SmartTeam();
+    class SmartTeam {
+    private:
+        std::vector<Character *> fighters;
+        Character *leader;
 
-    void add(Fighter *fighter);
+    public:
+        SmartTeam(Character *leader);
 
-    void attack(SmartTeam *enemy);
+        ~SmartTeam();
 
-    bool stillAlive();
+        void add(Character *fighter);
 
-    void print();
-};
+        void attack(SmartTeam *enemy);
+
+        bool stillAlive();
+
+        void print();
+    };
+}
