@@ -14,6 +14,7 @@
 namespace ariel {
     class Point {
     public:
+        Point() : x(0), y(0) {}
         Point(double x, double y);
 
         double distance(const Point &other) const;

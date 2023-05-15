@@ -50,3 +50,17 @@ TEST_SUITE("point class methods"){
         CHECK(p1.getY() == 2);
     }
 }
+
+TEST_SUITE("charachter class methods"){
+    TEST_CASE("constructor"){
+
+        SUBCASE("constructor with parameters"){
+            Point p1(1,2);
+            Character c1("shora",p1,100);
+            CHECK(c1.getName() == "shora");
+            CHECK(c1.getLocation().getX() == 1);
+            CHECK(c1.getLocation().getY() == 2);
+            CHECK(c1.isAlive() == true);
+        }
+    }
+}
