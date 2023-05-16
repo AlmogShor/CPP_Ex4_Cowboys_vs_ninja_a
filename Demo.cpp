@@ -47,7 +47,7 @@ int main() {
         team_B.attack(&team_A);
         team_A.print();
         team_B.print();
-        printf("i");
+
      }
 
      if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;

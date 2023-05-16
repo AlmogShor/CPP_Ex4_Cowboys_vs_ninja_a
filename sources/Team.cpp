@@ -122,7 +122,7 @@ namespace ariel {
 
     void Team::attack(Team *enemy) {}
 
-    bool Team::stillAlive() { return true; }
+    bool Team::stillAlive() { return false; }
 
     void Team::print() {}
 
